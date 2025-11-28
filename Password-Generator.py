@@ -230,8 +230,9 @@ def generate14():
 
 
 def copyclip():
-    passwordcopy = password_entry["text"]
+    passwordcopy = password_entry.get()  # Correct method to get text
     pyperclip.copy(passwordcopy)
+    tkinter.messagebox.showinfo("Copied", "Password copied to clipboard!")
 
 
 root = Tk()
