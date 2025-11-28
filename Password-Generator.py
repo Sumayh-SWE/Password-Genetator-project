@@ -11,8 +11,12 @@ length_value = 7
 
 def get_slider_value(value):
     global length_value
-    length_value = int(value)
-    progress_status()
+    try:
+        length_value = int(value)
+        progress_status()
+    except ValueError:
+        tkinter.messagebox.showerror("Error", "Invalid slider value")
+
 
 
 def progress_status():
