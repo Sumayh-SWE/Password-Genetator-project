@@ -23,6 +23,13 @@ def progress_status():
     global no_of_options, length_value
     no_of_options = upper_case.get() * 5 + small_case.get() * 5 + special_Chars.get() * 5 + num.get() * 5 + length_value * 5
     length_progress['value'] = no_of_options
+        # Change progress bar color based on strength
+    if no_of_options < 30:
+        length_progress.config(style="Red.Horizontal.TProgressbar")
+    elif no_of_options < 50:
+        length_progress.config(style="Yellow.Horizontal.TProgressbar")
+    else:
+        length_progress.config(style="Green.Horizontal.TProgressbar")
 
 
 def generate_pass():
