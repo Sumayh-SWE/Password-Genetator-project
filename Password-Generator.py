@@ -36,24 +36,20 @@ def generate_pass():
     global no_of_options, length_value
     password = ""
 
-    switchCode = str(upper_case.get())+str(small_case.get())+str(special_Chars.get())+str(num.get())
+    chars = ""
+    if upper_case.get(): chars += string.ascii_uppercase
+    if small_case.get(): chars += string.ascii_lowercase
+    if num.get(): chars += string.digits
+    if special_Chars.get(): chars += string.punctuation
 
-    switcher = {
-        '1100': generate1,
-        '1101': generate2,
-        '0001': generate3,
-        '1111': generate4,
-        '0100': generate5,
-        '1000': generate6,
-        '0010': generate7,
-        '1001': generate8,
-        '0101': generate9,
-        '1010': generate10,
-        '0110': generate11,
-        '1110': generate12,
-        '0011': generate13,
-        '0111': generate14
-    }
+    if not chars:
+        password_entry.delete(0, END)
+        password_entry.insert(0, "Please select at least one checkbox")
+        return
+
+    password = "".join(random.sample(chars, length_value))
+    password_entry.delete(0, END)
+    password_entry.insert(0, password)
         
     password = switcher.get(switchCode, lambda: "Please select atleast one checkbox ")()
 
