@@ -46,7 +46,12 @@ def generate_pass():
         password_entry.delete(0, END)
         password_entry.insert(0, "Please select at least one checkbox")
         return
-
+    # --- Length Validation ----
+    n = int(length_value)
+    if n < 7 or n > 16:
+        tkinter.messagebox.showerror("Error", "Password length must be 7-16")
+        return
+    # --------------------------
     password = "".join(random.sample(chars, length_value))
     password_entry.delete(0, END)
     password_entry.insert(0, password)
