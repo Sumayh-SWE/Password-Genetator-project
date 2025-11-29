@@ -30,6 +30,30 @@ def progress_status():
         length_progress.config(style="Yellow.Horizontal.TProgressbar")
     else:
         length_progress.config(style="Green.Horizontal.TProgressbar")
+def password_strength_tooltip(password):
+    """
+    Function to show password strength in a tooltip_label
+    """
+    score = 0
+    if upper_case.get(): score += 1
+    if small_case.get(): score += 1
+    if num.get(): score += 1
+    if special_Chars.get(): score += 1
+    if length_value >= 12: score += 1
+
+    if score <= 2:
+        strength = "Weak"
+        tooltip_label.config(fg="red")
+    elif score <= 4:
+        strength = "Medium"
+        tooltip_label.config(fg="orange")
+    else:
+        strength = "Strong"
+        tooltip_label.config(fg="green")
+    
+    tooltip_label.config(text=f"Password Strength: {strength}")
+tooltip_label = Label(root, text="", fg="black", font=("Arial", 10, 'bold'))
+tooltip_label.place(x=220, y=170)  # فوق حقل الباسورد
 
 
 def generate_pass():
