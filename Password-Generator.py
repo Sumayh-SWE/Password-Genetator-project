@@ -252,30 +252,21 @@ password_str = StringVar()
 
 # Checkboxes
 C1 = Checkbutton(root, text="A-Z", variable=upper_case, onvalue=1, offvalue=0, command=progress_status)
-C1.place(x=100, y=40)
+C1.place(x=50, y=50)
 C2 = Checkbutton(root, text="a-z", variable=small_case, onvalue=1, offvalue=0, command=progress_status)
-C2.place(x=180, y=40)
+C2.place(x=120, y=50)
 C3 = Checkbutton(root, text="0-9", variable=num, onvalue=1, offvalue=0, command=progress_status)
-C3.place(x=250, y=40)
-C4 = Checkbutton(root, text="special characters", variable=special_Chars, onvalue=1, offvalue=0,
-                 command=progress_status)
-C4.place(x=320, y=40)
+C3.place(x=190, y=50)
+C4 = Checkbutton(root, text="special chars", variable=special_Chars, onvalue=1, offvalue=0, command=progress_status)
+C4.place(x=280, y=50)
 
-# Length scale
-s1 = Scale(root, variable=length,
-           from_=7, to=16,
-           orient=HORIZONTAL, command=get_slider_value
-           )
-s1.place(x=550, y=40)
-scale_lable = Label(root, text="Length",
-                    font=("Arial", 11)).place(x=500, y=40)
+# Scale
+s1 = Scale(root, variable=length, from_=7, to=16, orient=HORIZONTAL, command=get_slider_value)
+s1.place(x=450, y=50)
+scale_label = Label(root, text="Length").place(x=400, y=50)
 
-strength_lable = Label(root, text="Password Strength",
-                       font=("Arial", 12, "bold")).place(x=280, y=80)
-
-# Progressbar to show strength
-length_progress = Progressbar(root, orient=HORIZONTAL,
-                              length=400, mode='determinate')
+# Progressbar
+length_progress = Progressbar(root, orient=HORIZONTAL, length=400, mode='determinate')
 length_progress.place(x=150, y=120)
 
 btn = Button(master=root, text="calculate", fg="green",
